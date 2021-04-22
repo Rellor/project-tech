@@ -1,0 +1,38 @@
+body {
+background-color: #1A1A1A;
+color: #FFF9FC;
+font-family: optimusprincepsregular;
+margin: 0px;
+}
+
+h1 {
+  font-weight: normal;
+}
+header {
+  text-align: center;
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 0;
+}
+
+@font-face {
+    font-family: 'optimusprincepsregular';
+    src: url('../font/optimusprinceps-webfont.woff2') format('woff2'),
+         url('../font/optimusprinceps-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'optimusprincepssemiboldRg';
+    src: url('../font/optimusprincepssemibold-webfont.woff2') format('woff2'),
+         url('../font/optimusprincepssemibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

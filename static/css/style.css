@@ -1,4 +1,10 @@
-body {
-background-color: yellow;
+.homebutton {
+  text-decoration: none;
+  font-size: 1.5em;
+  color: #F1E6C7;
+}
 
+.homemain {
+  text-align: center;
+  margin: 10%
 }
