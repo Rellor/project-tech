@@ -6,12 +6,7 @@ app.use(express.static('static'))
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  res.render('index',  { title: 'Dark Souls 3 Matcher', homebutton:'https://en.bandainamcoent.eu/dark-souls/dark-souls', homebuttonlink:'Tap screen', kutzooilink: '', kutzooi: '' })
-})
-
-app.get('/About', (req, res) => {
-  const name = 'Danny'
-  res.send('Hello ${name}')
+  res.render('index',  { title: 'Dark Souls 3 Matcher', homebutton:'login', homebuttonlink:'Tap screen', kutzooilink: '', kutzooi: '' })
 })
 
 // 404 pagina

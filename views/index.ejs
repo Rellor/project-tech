@@ -6,9 +6,13 @@
   </head>
   <body>
     <%- include ('main/header'); %>
-    <main class="homemain">
-    <a class="homebutton" href="<%- homebutton %>"><%- homebuttonlink %></a>
-    </main>
+
+    <a class="homebutton" href="<%- homebutton %>">
+      <main class="homemain">
+          <p class="hometekst"><%- homebuttonlink %><p>
+      </main>
+    </a>
+
     <%- include ('main/footer'); %>
   </body>
 </html>
