@@ -21,9 +21,9 @@ app.get('/login', (req, res) => {
 })
 
 app.post('/login', (req, res) => {
-  var naam = req.body.firstname;
-  console.log(naam);
-    res.render('pages/login',  { title: 'Login', naam: naam})
+  var username = req.body.username;
+  var password = req.body.password;
+    res.render('pages/login',  { title: 'Login', username: username, password: password})
 })
 
 app.post('/login', function(req, res, next){

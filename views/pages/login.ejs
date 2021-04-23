@@ -9,13 +9,22 @@
 
       <main>
         <form class="" action="/login" method="post">
-          Naam: <input type="text" name="firstname" value="Bas">
-          <input type="submit" name="submit" value="Submit">
+          Username: <input type="text" name="username" placeholder="Username">
           <br><br>
-          <%- naam %>
+          Password: <input type="text" name="password" placeholder="Password">
+          <br><br>
+          <input type="submit" name="submit" value="Submit">
         </form>
-      </main>
+        <br> <br>
+        <%- username %>
+        <br><br>
+        <%- password %>
 
+      </main>
     <%- include ('../main/footer'); %>
   </body>
+
+  <script>
+    console.log(naam);
+  </script>
 </html>
