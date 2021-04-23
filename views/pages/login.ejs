@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title><%- title %></title>
+  </head>
+  <body class="login">
+    <%- include ('../main/header'); %>
+
+      <main>
+        <form class="" action="/login" method="post">
+          Naam: <input type="text" name="firstname" value="Bas">
+          <input type="submit" name="submit" value="Submit">
+          <br><br>
+          <%- naam %>
+        </form>
+      </main>
+
+    <%- include ('../main/footer'); %>
+  </body>
+</html>
