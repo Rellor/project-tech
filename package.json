@@ -4,7 +4,8 @@
   "description": "Matich app for project tech",
   "main": "server.js",
   "scripts": {
-    "test": "nodemon server.js"
+    "test": "nodemon server.js",
+    "database": "nodemon connect.js"
   },
   "repository": {
     "type": "git",
@@ -22,8 +23,12 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "camelcase": "^6.2.0",
+    "dotenv": "^9.0.1",
     "ejs": "^3.1.6",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongodb": "^3.6.6",
+    "multer": "^1.4.2",
+    "slug": "^4.0.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
