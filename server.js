@@ -3,6 +3,12 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 6969;
 
+const port = process.env.PORT || 8000;
+
+server.listen(port, () => {
+    console.log("App is running on port " + port);
+});
+
 require('dotenv').config({
   path: '.env'
 });
