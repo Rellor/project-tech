@@ -1,8 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = 6969;
-
 const port = process.env.PORT || 8000;
 
 server.listen(port, () => {
