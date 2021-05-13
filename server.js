@@ -7,6 +7,14 @@ require('dotenv').config({
   path: '.env'
 });
 
+app.use(express.static('static'));
+app.use(bodyParser());
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+app.use(bodyParser.json());
+
 const {
   DB_URL,
   DB_USER,
@@ -26,73 +34,81 @@ client.connect((err) => {
 });
 
 
-
-app.use(express.static('static'));
-app.use(bodyParser());
-app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
-app.use(bodyParser.json());
-
-
 app.get('/', (req, res) => {
   res.render('index', {
     title: 'Dark Souls 3 Matcher',
     homebutton: 'login',
     homebuttonlink: 'Tap screen',
-    kutzooilink: '',
-    kutzooi: ''
   })
 })
 
-app.get('/login', (req, res) => {
+app.get('/test', (req, res) => {
   MongoClient.connect(URI, function(err, db) {
     if (err) throw err;
-    const dbo = db.db('Project-Tech-Database');
-    // Find all documents in the customers collection:
-    dbo.collection('users').find({}).toArray(function(err, result) {
+    var dbo = db.db('Project-Tech-Database');
+    dbo.collection('users').findOne({}, function(err, result) {
       if (err) throw err;
-      console.log(result);
+      console.log(result.name);
+      console.log('hierboven moet het staan');
       db.close();
     });
   });
 
-  const username = req.body.username;
-  const password = req.body.password;
-  const image = req.body.image;
-  res.render('pages/login', {
-    title: 'Login',
-    username: username,
-    password: password,
-    image: image
+  res.render('pages/test', {
+    title: 'test page',
   })
-  res.sendFile('login');
-
 })
 
-app.post('/login', (req, res) => {
+
+app.post('/test', (req, res) => {
+const usernametest = req.body.usertest;
+const passwordtest = req.body.passtest;
+const imagetest = req.body.image;
+
   MongoClient.connect(URI, function(err, db) {
     if (err) throw err;
-    const dbo = db.db('Project-Tech-Database');
-    // Find all documents in the customers collection:
-    dbo.collection('users').find({}).toArray(function(err, result) {
+    var dbo = db.db('Project-Tech-Database');
+    var myobj = { username: usernametest, password: passwordtest, image: imagetest};
+    dbo.collection('users').insertOne(myobj, function(err, res) {
       if (err) throw err;
-      console.log(result);
+      console.log('1 document inserted');
       db.close();
     });
   });
 
-  const username = req.body.username;
-  const password = req.body.password;
-  const image = req.body.image;
-  res.render('pages/login', {
-    title: 'Login',
-    username: username,
-    password: password,
-    image: image
+  res.render('pages/test', {
+    title: 'test page'
   })
-  res.sendFile('login');
+})
+
+app.get('/testupdate', (req, res) => {
+
+  res.render('pages/testupdate', {
+    title: 'test page',
+  })
+})
+
+
+app.post('/testupdate', (req, res) => {
+const usernametest = req.body.usertest;
+const passwordtest = req.body.passtest;
+const imagetest = req.body.image;
+
+MongoClient.connect(URI, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db('Project-Tech-Database');
+  var myquery = { username: usernametest, password: passwordtest };
+  var newvalues = { $set: {image: imagetest} };
+  dbo.collection('users').updateOne(myquery, newvalues, function(err, res) {
+    if (err) throw err;
+    console.log('1 document updated');
+    db.close();
+  });
+});
+
+  res.render('pages/testupdate', {
+    title: 'test page'
+  })
 })
 
 app.post('/login', function(req, res, next) {

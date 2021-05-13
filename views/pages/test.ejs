@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title><%- title %></title>
+  </head>
+  <body>
+    <%- include ('../main/header'); %>
+
+    <form class="" action="/test" method="post">
+      Username: <input type="text" name="usertest" value="">
+      <br>
+      Password: <input type="text" name="passtest" value="">
+      <br>
+      image: <input type="radio" name="image" id="img1" value="img/Archdeacon-royce.jpg">
+      <input type="radio" name="image" id="img2" value="img/maxresdefault.jpg">
+      <input type="radio" name="image" id="img3" value="img/images.png">
+      <br>
+      <input type="submit" name="submittest" value="">
+    </form>
+
+    <%- include ('../main/footer'); %>
+  </body>
+</html>
