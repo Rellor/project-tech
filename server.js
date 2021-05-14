@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 6969
+const session = require('express-session');
 
 require('dotenv').config({
   path: '.env'
@@ -14,6 +15,11 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(bodyParser.json());
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: true
+}));
 
 const {
   DB_URL,
@@ -140,10 +146,12 @@ app.get('/account', (req, res) => {
   });
 });
 
-app.post('/login', function(req, res, next) {
-  // req.body object has your form values
-  console.log(req.body.firstname);
-});
+app.get('/login', (req, res) => {
+
+  res.render('pages/login', {
+    title: 'test page',
+  })
+})
 
 // 404 pagina
 app.use((req, res, next) => {

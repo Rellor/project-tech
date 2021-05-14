@@ -1,44 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title><%- title %></title>
-  </head>
-  <body class="login">
-    <%- include ('../main/header'); %>
 
-      <main>
-        <form class="" action="/login" method="post">
-          Username: <input type="text" name="username" placeholder="Username">
-          <br><br>
-          Password: <input type="password" name="password" placeholder="Password" style="margin-bottom: 3%;">
-          <br><br>
+<head>
+  <meta charset="utf-8">
+  <title><%- title %></title>
+</head>
 
-          <label class="radiocontainer">
-            <input type="radio" name="image" id="img1" value="img/Archdeacon-royce.jpg">
-            <span class="checkmark1 checkmark"></span>
-          </label>
+<body class="login">
+  <%- include ('../main/header'); %>
 
-          <label class="radiocontainer">
-            <input type="radio" name="image" id="img2" value="img/maxresdefault.jpg">
-            <span class="checkmark2 checkmark"></span>
-          </label>
+  <main>
+    <form class="" action="/login" method="post">
+      Username: <input type="text" name="username" placeholder="Username">
+      <br><br>
+      Password: <input type="password" name="password" placeholder="Password" style="margin-bottom: 3%;">
+      <br><br>
+      <input type="submit" name="submit" value="Submit" style="margin-top: 3%;">
+    </form>
 
-          <br> <br>
-          <input type="submit" name="submit" value="Submit" style="margin-top: 3%;">
-        </form>
-        <br> <br>
-        <%- username %>
-        <br><br>
-        <%- password %>
-        <br> <br>
-        <img width="200px" height="200px" src="<%- image %>" alt="">
+  </main>
+  <%- include ('../main/footer'); %>
+</body>
 
-      </main>
-    <%- include ('../main/footer'); %>
-  </body>
-
-  <script>
-    console.log(naam);
-  </script>
 </html>
