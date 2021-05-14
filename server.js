@@ -21,6 +21,12 @@ const {
   DB_PASS
 } = process.env;
 
+let users = {
+  username: '',
+  password: '',
+  image: ''
+}
+
 const MongoClient = require('mongodb').MongoClient;
 const URI = process.env.MONGO_CONNECTION_URI;
 const client = new MongoClient(URI, {
@@ -106,7 +112,9 @@ app.post('/update', (req, res) => {
       }
     };
     dbo.collection('users').updateOne(myquery, newvalues, function(err, res) {
-      if (err) throw err;
+      if (err) {
+        throw err
+      } else;
       console.log('1 document updated');
       db.close();
     });
@@ -127,12 +135,21 @@ app.get('/update', (req, res) => {
 })
 
 app.get('/account', (req, res) => {
-
-  res.render('pages/account', {
-    title: 'test page',
-    pagetext: 'view account'
-  })
-})
+  MongoClient.connect(URI, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db('Project-Tech-Database');
+    dbo.collection('users').find().toArray()
+      .then(results => {
+        res.render('pages/account', {
+          title: 'test page',
+          pagetext: 'view account',
+          users: results,
+          uitkomst: users
+        })
+      })
+    db.close();
+  });
+});
 
 app.post('/login', function(req, res, next) {
   // req.body object has your form values

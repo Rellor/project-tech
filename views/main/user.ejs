@@ -1,0 +1,11 @@
+<div class="">
+  <% users.forEach(function(users) { %>
+  <div class="">
+    <img height="100px" width="100px" alt="" src="<%- users.image || 'https://i1.wp.com/saedx.com/blog/wp-content/uploads/2019/01/saedx-blog-featured-70.jpg?fit=1200%2C500&ssl=1'%>">
+    <div class="">
+      <h4><%= users.username.replace(/\w/, c => c.toUpperCase())%>
+        <h5><%= users.password.replace(/\w/, c => c.toUpperCase()) %>
+    </div>
+  </div>
+  <% });%>
+</div>
