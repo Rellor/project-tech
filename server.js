@@ -50,17 +50,6 @@ app.get('/', (req, res) => {
 
 app.get('/register', (req, res) => {
 
-  MongoClient.connect(URI, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db('Project-Tech-Database');
-    dbo.collection('users').findOne({}, function(err, result) {
-      if (err) throw err;
-      console.log(result.name);
-      console.log('hierboven moet het staan');
-      db.close();
-    });
-  });
-
   res.render('pages/register', {
     title: 'test page',
     pagetext: 'register account'
