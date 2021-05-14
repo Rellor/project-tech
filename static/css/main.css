@@ -19,6 +19,10 @@ footer {
   bottom: 0;
 }
 
+main {
+  text-align: center;
+}
+
 @font-face {
     font-family: 'optimusprincepsregular';
     src: url('../font/optimusprinceps-webfont.woff2') format('woff2'),

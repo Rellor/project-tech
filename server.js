@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = process.env.PORT||8000
+const port = process.env.PORT || 8000
 
 require('dotenv').config({
   path: '.env'
@@ -42,7 +42,8 @@ app.get('/', (req, res) => {
   })
 })
 
-app.get('/test', (req, res) => {
+app.get('/register', (req, res) => {
+
   MongoClient.connect(URI, function(err, db) {
     if (err) throw err;
     var dbo = db.db('Project-Tech-Database');
@@ -54,21 +55,26 @@ app.get('/test', (req, res) => {
     });
   });
 
-  res.render('pages/test', {
+  res.render('pages/register', {
     title: 'test page',
+    pagetext: 'register account'
   })
 })
 
 
-app.post('/test', (req, res) => {
-const usernametest = req.body.usertest;
-const passwordtest = req.body.passtest;
-const imagetest = req.body.image;
+app.post('/register', (req, res) => {
+  const usernametest = req.body.usertest;
+  const passwordtest = req.body.passtest;
+  const imagetest = req.body.image;
 
   MongoClient.connect(URI, function(err, db) {
     if (err) throw err;
     var dbo = db.db('Project-Tech-Database');
-    var myobj = { username: usernametest, password: passwordtest, image: imagetest};
+    var myobj = {
+      username: usernametest,
+      password: passwordtest,
+      image: imagetest
+    };
     dbo.collection('users').insertOne(myobj, function(err, res) {
       if (err) throw err;
       console.log('1 document inserted');
@@ -76,38 +82,55 @@ const imagetest = req.body.image;
     });
   });
 
-  res.render('pages/test', {
-    title: 'test page'
-  })
-})
-
-app.get('/testupdate', (req, res) => {
-
-  res.render('pages/testupdate', {
+  res.render('pages/register', {
     title: 'test page',
+    pagetext: 'register account'
   })
 })
 
+app.post('/update', (req, res) => {
+  const usernametest = req.body.usertest;
+  const passwordtest = req.body.passtest;
+  const imagetest = req.body.image;
 
-app.post('/testupdate', (req, res) => {
-const usernametest = req.body.usertest;
-const passwordtest = req.body.passtest;
-const imagetest = req.body.image;
-
-MongoClient.connect(URI, function(err, db) {
-  if (err) throw err;
-  var dbo = db.db('Project-Tech-Database');
-  var myquery = { username: usernametest, password: passwordtest };
-  var newvalues = { $set: {image: imagetest} };
-  dbo.collection('users').updateOne(myquery, newvalues, function(err, res) {
+  MongoClient.connect(URI, function(err, db) {
     if (err) throw err;
-    console.log('1 document updated');
-    db.close();
+    var dbo = db.db('Project-Tech-Database');
+    var myquery = {
+      username: usernametest,
+      password: passwordtest
+    };
+    var newvalues = {
+      $set: {
+        image: imagetest
+      }
+    };
+    dbo.collection('users').updateOne(myquery, newvalues, function(err, res) {
+      if (err) throw err;
+      console.log('1 document updated');
+      db.close();
+    });
   });
-});
 
-  res.render('pages/testupdate', {
-    title: 'test page'
+  res.render('pages/update', {
+    title: 'test page',
+    pagetext: 'update account'
+  })
+})
+
+app.get('/update', (req, res) => {
+
+  res.render('pages/update', {
+    title: 'test page',
+    pagetext: 'update account'
+  })
+})
+
+app.get('/account', (req, res) => {
+
+  res.render('pages/account', {
+    title: 'test page',
+    pagetext: 'view account'
   })
 })
 

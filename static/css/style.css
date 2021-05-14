@@ -19,30 +19,3 @@
   left: 46%;
   top: 50%;
 }
- .login main {
-   text-align: center;
- }
-
-.checkmark1 {
-  background: url(../img/Archdeacon-royce.jpg);
-  background-size: cover;
-  background-position: center;
-  padding: 2%;
-  margin-right: 2%;
-}
-
-.checkmark2 {
-  background: url(../img/maxresdefault.jpg);
-  background-size: cover;
-  background-position: center;
-  padding: 2%;
-}
-
-.radiocontainer input {
-  display: none;
-  marg
-}
-
-.radiocontainer input:checked ~ .checkmark {
-  border: 2px solid white;
-}

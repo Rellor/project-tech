@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title><%- title %></title>
-  </head>
-  <body>
-    <%- include ('../main/header'); %>
 
-    <form class="" action="/test" method="post">
+<head>
+  <meta charset="utf-8">
+  <title><%- title %></title>
+</head>
+
+<body>
+  <%- include ('../main/header'); %>
+  <main>
+
+    <h1> <%- pagetext %> </h1>
+
+    <form class="" action="/updateuser" method="post">
       Username: <input type="text" name="usertest" value="">
       <br>
       Password: <input type="text" name="passtest" value="">
@@ -19,6 +24,9 @@
       <input type="submit" name="submittest" value="">
     </form>
 
-    <%- include ('../main/footer'); %>
-  </body>
+  </main>
+
+  <%- include ('../main/footer'); %>
+</body>
+
 </html>
