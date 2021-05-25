@@ -33,6 +33,9 @@ let users = {
   image: ''
 }
 
+let loginuser = 'Admin'
+let loginpassword = 'Password123'
+
 const MongoClient = require('mongodb').MongoClient;
 const URI = process.env.MONGO_CONNECTION_URI;
 const client = new MongoClient(URI, {
@@ -51,14 +54,20 @@ app.get('/', (req, res) => {
     title: 'Dark Souls 3 Matcher',
     homebutton: 'login',
     homebuttonlink: 'Tap screen',
+    loggedinuser: 'log in',
+    loggedinlink: '/login',
+    loggedinimg: 'img/no-user-image.gif'
   })
 })
 
 app.get('/register', (req, res) => {
 
   res.render('pages/register', {
-    title: 'test page',
-    pagetext: 'register account'
+    title: 'Register',
+    pagetext: 'register account',
+    loggedinuser: 'log in',
+    loggedinlink: '/login',
+    loggedinimg: 'img/no-user-image.gif'
   })
 })
 
@@ -84,8 +93,11 @@ app.post('/register', (req, res) => {
   });
 
   res.render('pages/register', {
-    title: 'test page',
-    pagetext: 'register account'
+    title: 'Register',
+    pagetext: 'register account',
+    loggedinuser: 'log in',
+    loggedinlink: '/login',
+    loggedinimg: 'img/no-user-image.gif'
   })
 })
 
@@ -116,41 +128,69 @@ app.post('/update', (req, res) => {
   });
 
   res.render('pages/update', {
-    title: 'test page',
-    pagetext: 'update account'
+    title: 'Update',
+    pagetext: 'update account',
+    loggedinuser: loginuser,
+    loggedinlink: '/update',
+    loggedinimg: 'img/Archdeacon-royce.jpg'
   })
 })
 
 app.get('/update', (req, res) => {
 
   res.render('pages/update', {
-    title: 'test page',
-    pagetext: 'update account'
+    title: 'Update',
+    pagetext: 'update account',
+    loggedinuser: loginuser,
+    loggedinlink: '/update',
+    loggedinimg: 'img/Archdeacon-royce.jpg'
   })
 })
-
-app.get('/account', (req, res) => {
-  MongoClient.connect(URI, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db('Project-Tech-Database');
-    dbo.collection('users').find().toArray()
-      .then(results => {
-        res.render('pages/account', {
-          title: 'test page',
-          pagetext: 'view account',
-          users: results,
-          uitkomst: users
-        })
-      })
-    db.close();
-  });
-});
 
 app.get('/login', (req, res) => {
 
   res.render('pages/login', {
-    title: 'test page',
+    title: 'log in',
+    loggedinuser: 'log in',
+    loggedinlink: '/login',
+    loggedinimg: 'img/no-user-image.gif',
+    failedlogin: 'hidden'
   })
+})
+
+app.post('/login', (req, res) => {
+  const usernamelogin = req.body.username;
+  const passwordlogin = req.body.password;
+
+  if (usernamelogin == loginuser && passwordlogin == loginpassword) {
+    console.log('ja top man en nu?');
+    MongoClient.connect(URI, function(err, db) {
+      if (err) throw err;
+      var dbo = db.db('Project-Tech-Database');
+      dbo.collection('users').find().toArray()
+        .then(results => {
+          res.render('pages/account', {
+            title: 'Accounts',
+            pagetext: 'view account',
+            users: results,
+            uitkomst: users,
+            loggedinuser: loginuser,
+            loggedinlink: '/update',
+            loggedinimg: 'img/Archdeacon-royce.jpg',
+          })
+        })
+      db.close();
+    });
+  } else {
+    console.log('werkt niet man shit')
+    res.render('pages/login', {
+      title: 'log in',
+      loggedinuser: 'log in',
+      loggedinlink: '/login',
+      loggedinimg: 'img/no-user-image.gif',
+      failedlogin: 'visible'
+    })
+  }
 })
 
 // 404 pagina
