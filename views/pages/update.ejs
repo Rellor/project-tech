@@ -17,11 +17,24 @@
       <br>
       Password: <input type="text" name="passtest" value="">
       <br>
-      image: <input type="radio" name="image" id="img1" value="img/Archdeacon-royce.jpg">
-      <input type="radio" name="image" id="img2" value="img/maxresdefault.jpg">
-      <input type="radio" name="image" id="img3" value="img/images.png">
+      <div class="radiobuttons">
+        <label class="pickercontainer">
+          <input type="radio" name="image" value="img/Archdeacon-royce.jpg" checked>
+          <span class="checkmark" id="img1"></span>
+        </label>
+
+        <label class="pickercontainer">
+          <input type="radio" name="image" value="img/maxresdefault.jpg">
+          <span class="checkmark" id="img2"></span>
+        </label>
+
+        <label class="pickercontainer">
+          <input type="radio" name="image" value="img/images.png">
+          <span class="checkmark" id="img3"></span>
+        </label>
+      </div>
       <br>
-      <input type="submit" name="submittest" value="">
+      <input type="submit" name="submittest" value="Submit">
     </form>
 
   </main>

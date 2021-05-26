@@ -131,7 +131,7 @@ app.post('/update', (req, res) => {
     title: 'Update',
     pagetext: 'update account',
     loggedinuser: loginuser,
-    loggedinlink: '/update',
+    loggedinlink: '/login',
     loggedinimg: 'img/Archdeacon-royce.jpg'
   })
 })
@@ -142,7 +142,7 @@ app.get('/update', (req, res) => {
     title: 'Update',
     pagetext: 'update account',
     loggedinuser: loginuser,
-    loggedinlink: '/update',
+    loggedinlink: '/login',
     loggedinimg: 'img/Archdeacon-royce.jpg'
   })
 })

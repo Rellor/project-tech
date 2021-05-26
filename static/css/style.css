@@ -1,5 +1,4 @@
 /* HOME PAGE */
-
 .homebutton {
   text-decoration: none;
   font-size: 1.5em;
@@ -22,4 +21,46 @@
 
 .login form p {
   color: red;
+}
+
+/* update and register image picker */
+.pickercontainer {
+  position: relative;
+  cursor: pointer;
+  margin-left: 1%;
+}
+
+.checkmark {
+  padding: 3% 3.5%;
+}
+
+.pickercontainer input:checked~.checkmark {
+  border: 2px solid white;
+}
+
+#img1 {
+  background-image: url("../img/Archdeacon-royce2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#img2 {
+  background-image: url("../img/maxresdefault2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#img3 {
+  background-image: url("../img/images2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.pickercontainer input {
+  position: absolute;
+  display: none;
+}
+
+.radiobuttons {
+  margin: 5% 0%;
 }
