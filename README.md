@@ -1,5 +1,7 @@
 # Welkom bij de Dark souls matcher!
 
+![Banner README](https://github.com/Rellor/project-tech/blob/main/static/img/githubimg/BannerREADME.png)
+
 Wil je gemakkelijk matches zoeken tegen andere spelers? Dan is deze app perfect voor jou! Met de dark souls matcher kan je zoeken naar jouw ideale tegenstander. Je kan je tegenstander vinden op basis van level en bepaalde items die hij/zij gebruikt. Heb je een match gevonden? Perfect! Chat met je tegenstander en bespreek waar en wanneer. Als je gevecht klaar is kan je na afloop je tegenstander een like of dislike geven. Dit kan andere mensen eventueel waarschuwen voor dit persoon.
 
 ## Hoe gebruik je de app?
