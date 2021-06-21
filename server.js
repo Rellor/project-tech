@@ -92,12 +92,12 @@ app.post('/register', (req, res) => {
     });
   });
 
-  res.render('pages/register', {
-    title: 'Register',
-    pagetext: 'register account',
+  res.render('pages/login', {
+    title: 'log in',
     loggedinuser: 'log in',
     loggedinlink: '/login',
-    loggedinimg: 'img/no-user-image.gif'
+    loggedinimg: 'img/no-user-image.gif',
+    failedlogin: 'hidden'
   })
 })
 
